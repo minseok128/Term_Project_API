@@ -14,3 +14,10 @@ def Show_extinguisher(request):
     totalExtinguisher = list(Extinguisher.objects.all())
     serializer = ExtinguisherSerializer(totalExtinguisher, many=True)
     return Response(serializer.data)
+
+
+@api_view(['GET'])
+def Show_extinguisher_num(request, id):
+    ExtinguisherByNum = Extinguisher.objects.get(num=id)
+    serializer = ExtinguisherSerializer(ExtinguisherByNum)
+    return Response(serializer.data)
